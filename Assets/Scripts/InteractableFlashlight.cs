@@ -7,7 +7,6 @@ public class InteractableFlashlight : VRTK_InteractableObject {
 	public Light light;
 
 	public override void StartUsing(VRTK_InteractUse usingObject) {
-		Debug.Log(" hola");
 		base.StartUsing(usingObject);
 		light.enabled = !light.enabled;
 	}
