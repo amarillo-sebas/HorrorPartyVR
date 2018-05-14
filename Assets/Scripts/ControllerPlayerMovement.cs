@@ -13,6 +13,8 @@ public class ControllerPlayerMovement : MonoBehaviour {
 	private float _gravity = 5f;
 	public float deadZone = 0.3f;
 
+	public bool canMove = true;
+
 	void Start () {
 		_id = GetComponent<ControllerPlayerID>();
 		_controller = GetComponent<CharacterController>();
@@ -20,25 +22,27 @@ public class ControllerPlayerMovement : MonoBehaviour {
 	}
 	
 	void Update () {
-		float xMovement = Input.GetAxis(_id.playerNumber + "_horizontal");
-		if (Mathf.Abs(xMovement) < deadZone) xMovement = 0f;
-		float yMovement = Input.GetAxis(_id.playerNumber + "_vertical");
-		if (Mathf.Abs(yMovement) < deadZone) yMovement = 0f;
+		if (canMove) {
+			float xMovement = Input.GetAxis(_id.playerNumber + "_horizontal");
+			if (Mathf.Abs(xMovement) < deadZone) xMovement = 0f;
+			float yMovement = Input.GetAxis(_id.playerNumber + "_vertical");
+			if (Mathf.Abs(yMovement) < deadZone) yMovement = 0f;
 
-		Vector3 moveDirection = new Vector3(xMovement, 0, yMovement);
-		moveDirection = transform.TransformDirection(moveDirection);
-		moveDirection *= moveSpeed;
-		moveDirection.y -= _gravity;
-		moveDirection.z = -moveDirection.z;
-		
-		_controller.Move(moveDirection * Time.deltaTime);
+			Vector3 moveDirection = new Vector3(xMovement, 0, yMovement);
+			moveDirection = transform.TransformDirection(moveDirection);
+			moveDirection *= moveSpeed;
+			moveDirection.y -= _gravity;
+			moveDirection.z = -moveDirection.z;
+			
+			_controller.Move(moveDirection * Time.deltaTime);
 
-		moveDirection.y = 0f;
-		_animationManager.anim.SetFloat("speed", moveDirection.magnitude);
+			moveDirection.y = 0f;
+			if (_animationManager.anim) _animationManager.anim.SetFloat("speed", moveDirection.magnitude);
 
-		if (moveDirection.magnitude > 0) {
-			Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-			_id.skinTransform.rotation = Quaternion.Slerp(_id.skinTransform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-		}
+			if (moveDirection.magnitude > 0) {
+				Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+				_id.skinTransform.rotation = Quaternion.Slerp(_id.skinTransform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+			}
+		}	
 	}
 }

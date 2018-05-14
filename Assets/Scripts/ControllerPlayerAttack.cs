@@ -14,11 +14,13 @@ public class ControllerPlayerAttack : MonoBehaviour {
 
 	private bool _canAttack = true;
 	private bool _canCheckHit = false;
-	private float _attackRange = 1.5f;
+	public float attackRange = 1.5f;
 
 	private AnimationManager _animationManager;
 
 	public LayerMask hitMask;
+
+	public string EnemyType;
 
 	void Start () {
 		_id = GetComponent<ControllerPlayerID>();
@@ -28,14 +30,23 @@ public class ControllerPlayerAttack : MonoBehaviour {
 	
 	void Update () {
 		if (Input.GetButtonDown(_id.playerNumber + "_attack")) {
-			if (_canAttack) Attack();
+			if (_canAttack) {
+				switch (EnemyType) {
+					case "papa":
+						Attack_PAPA();
+					break;
+					case "emo":
+						Attack_EMO();
+					break;
+				}
+			}
 		}
 
 		if (_canCheckHit) {
 			RaycastHit hit;
 			Vector3 origin = transform.position;
 			origin.y += 1f;
-			if (Physics.Raycast(origin, _id.skinTransform.forward, out hit, _attackRange, hitMask)) {
+			if (Physics.Raycast(origin, _id.skinTransform.forward, out hit, attackRange, hitMask)) {
 				Rigidbody rb = hit.transform.gameObject.GetComponent<PlayerSkinCommunicator>().rb;
 				if (rb) rb.AddForce(_id.skinTransform.forward * attackForce * 1500f);
 				PlayerHP hp = hit.transform.gameObject.GetComponent<PlayerHP>();
@@ -45,7 +56,7 @@ public class ControllerPlayerAttack : MonoBehaviour {
 		}
 	}
 
-	void Attack () {
+	void Attack_PAPA () {
 		_canAttack = false;
 		_canCheckHit = true;
 
@@ -56,6 +67,20 @@ public class ControllerPlayerAttack : MonoBehaviour {
 		_animationManager.anim.SetTrigger("attack");
 
 		StartCoroutine(AttackCooldown());
+	}
+	void Attack_EMO () {
+		_canAttack = false;
+
+		GetComponent<SoundsManager>().Attack();
+		_animationManager.anim.SetTrigger("attack");
+
+		StartCoroutine(AttackCooldown());
+	}
+	public void Attack_StartCheck () {
+		_canCheckHit = true;
+	}
+	public void Attack_EndCheck () {
+		_canCheckHit = false;
 	}
 
 	IEnumerator AttackCooldown () {
