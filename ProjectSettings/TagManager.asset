@@ -10,6 +10,13 @@ TagManager:
   - PlayerHands
   - Explosion
   - Mostro
+  - Cubes
+  - Spheres
+  - Leg
+  - Arm
+  - Saucers
+  - Torso
+  - OtherSaucers
   layers:
   - Default
   - TransparentFX
@@ -27,7 +34,7 @@ TagManager:
   - Mostro
   - PlayerInteract
   - PlayerInteractableTrigger
-  - 
+  - PlayerPickUp
   - 
   - 
   - 
