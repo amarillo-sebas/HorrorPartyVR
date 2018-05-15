@@ -6,6 +6,10 @@ TagManager:
   tags:
   - ExcludeTeleport
   - MonsterSkin
+  - Light
+  - PlayerHands
+  - Explosion
+  - Mostro
   layers:
   - Default
   - TransparentFX
@@ -19,10 +23,10 @@ TagManager:
   - VRPlayerHitBox
   - MonsterCantSee
   - WorldColliders
-  - 
-  - 
-  - 
-  - 
+  - Minimap
+  - Mostro
+  - PlayerInteract
+  - PlayerInteractableTrigger
   - 
   - 
   - 

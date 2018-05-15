@@ -309,6 +309,7 @@ MonoBehaviour:
   moveSpeed: 2
   rotationSpeed: 3
   deadZone: 0.3
+  canMove: 1
 --- !u!114 &114686061164587114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,9 +325,11 @@ MonoBehaviour:
   upAttackForce: 1
   attackCooldown: 1
   attackDamage: 10
+  attackRange: 1.5
   hitMask:
     serializedVersion: 2
     m_Bits: 512
+  EnemyType: 
 --- !u!114 &114773709372413764
 MonoBehaviour:
   m_ObjectHideFlags: 1

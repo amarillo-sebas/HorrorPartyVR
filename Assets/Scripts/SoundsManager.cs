@@ -8,6 +8,7 @@ public class SoundsManager : MonoBehaviour {
 	public AudioSource voiceAudioSource;
 	public AudioClip[] stepClips;
 	public AudioSource stepsAudioSource;
+	public AudioClip[] damageClips;
 
 	public float speakMinTime;
 	public float speakMaxTime;
@@ -37,5 +38,15 @@ public class SoundsManager : MonoBehaviour {
 		float p = Random.Range(0.7f, 1f);
 		voiceAudioSource.pitch = p;
 		voiceAudioSource.Play();
+	}
+
+	public void TakeDamage () {
+		if (damageClips.Length > 0) {
+			int r = Random.Range(0, damageClips.Length);
+			voiceAudioSource.clip = damageClips[r];
+			float p = Random.Range(0.85f, 1f);
+			voiceAudioSource.pitch = p;
+			voiceAudioSource.Play();
+		}
 	}
 }

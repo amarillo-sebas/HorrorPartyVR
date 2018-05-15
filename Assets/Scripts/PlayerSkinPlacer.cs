@@ -12,6 +12,7 @@ public class PlayerSkinPlacer : MonoBehaviour {
 		_mySkin = Instantiate(skin, transform.position, transform.rotation);
 		_skinCommunicator = _mySkin.GetComponent<PlayerSkinCommunicator>();
 		_skinCommunicator.rb = transform.parent.gameObject.GetComponent<Rigidbody>();
+		_skinCommunicator.cam = transform;
 	}
 	
 	void FixedUpdate () {

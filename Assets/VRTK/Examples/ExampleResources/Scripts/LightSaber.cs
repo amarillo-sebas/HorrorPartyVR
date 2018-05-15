@@ -1,4 +1,4 @@
-﻿namespace VRTK.Examples
+namespace VRTK.Examples
 {
     using UnityEngine;
 
@@ -16,7 +16,7 @@
 
         public override void StartUsing(VRTK_InteractUse usingObject)
         {
-        Debug.Log(" hola");
+            //Debug.Log(" hola");
             base.StartUsing(usingObject);
             beamExtendSpeed = 5f;
             bladePhaseColors = new Color[2] { Color.blue, Color.cyan };

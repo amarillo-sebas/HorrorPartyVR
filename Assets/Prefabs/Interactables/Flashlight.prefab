@@ -59,7 +59,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4182776643632156}
   - component: {fileID: 33233229941722002}
-  - component: {fileID: 65277600422364932}
   - component: {fileID: 23226598857334806}
   m_Layer: 0
   m_Name: Cube (1)
@@ -266,18 +265,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65277600422364932
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1354623742403952}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65717496329727480
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -311,7 +298,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
   m_Cookie: {fileID: 2800000, guid: b3105b175069c2649a69728399be37f3, type: 3}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -442,3 +429,4 @@ MonoBehaviour:
   allowedUseControllers: 0
   usingState: 0
   light: {fileID: 108562100950164412}
+  col: {fileID: 65717496329727480}
