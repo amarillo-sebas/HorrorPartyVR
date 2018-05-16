@@ -410,6 +410,8 @@ namespace VRTK
                 SecondaryControllerGrab(currentGrabbingGameObject);
             }
             OnInteractableObjectGrabbed(SetInteractableObjectEvent(currentGrabbingGameObject));
+            //==Amarillo==
+            GetComponentInChildren<Collider>().isTrigger = true;
         }
 
         /// <summary>
@@ -440,6 +442,8 @@ namespace VRTK
                 SecondaryControllerUngrab(previousGrabbingGameObject);
             }
             OnInteractableObjectUngrabbed(SetInteractableObjectEvent(previousGrabbingGameObject));
+            //==Amarillo==
+            GetComponentInChildren<Collider>().isTrigger = false;
         }
 
         /// <summary>

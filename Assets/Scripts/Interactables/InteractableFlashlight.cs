@@ -10,14 +10,22 @@ public class InteractableFlashlight : VRTK_InteractableObject {
 	public override void StartUsing(VRTK_InteractUse usingObject) {
 		base.StartUsing(usingObject);
 		light.enabled = true;
-		col.enabled = false;
 	}
 
 	public override void StopUsing(VRTK_InteractUse usingObject) {
 		base.StopUsing(usingObject);
 		light.enabled = false;
-		col.enabled = true;
 	}
+
+	/*public override void Grabbed(VRTK_InteractGrab grabbingObject) {
+		base.Ungrabbed(grabbingObject);
+		col.isTrigger = true;
+	}
+
+	public override void Ungrabbed(VRTK_InteractGrab grabbingObject) {
+		base.Ungrabbed(grabbingObject);
+		col.isTrigger = false;
+	}*/
 	
 	void Update () {
 		base.Update();

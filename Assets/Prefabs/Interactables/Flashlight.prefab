@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33805474362954300}
   - component: {fileID: 65717496329727480}
   - component: {fileID: 23797816978631056}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114043915428209064}
   - component: {fileID: 114695887191632488}
   - component: {fileID: 114421304226709342}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 4182776643632156}
   - component: {fileID: 33233229941722002}
   - component: {fileID: 23226598857334806}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4811580345619054}
   - component: {fileID: 108562100950164412}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4893283974945030}
   - component: {fileID: 114756537996432478}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65717496329727480
 BoxCollider:
   m_ObjectHideFlags: 1

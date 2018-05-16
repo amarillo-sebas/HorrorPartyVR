@@ -78,6 +78,11 @@ namespace VRTK
         [Tooltip("The game object to snap into the dropzone when the drop zone is enabled. The game object must be valid in any given policy list to snap.")]
         public GameObject defaultSnappedObject;
 
+        [Space(5f)]
+        [Header("Amarillo")]
+        public SelfDestruct_Operator sdo;
+        public int objectiveIndex;
+
         /// <summary>
         /// Emitted when a valid interactable object enters the snap drop zone trigger collider.
         /// </summary>
@@ -137,6 +142,8 @@ namespace VRTK
             {
                 ObjectSnappedToDropZone(this, e);
             }
+            //==Amarillo==
+            if (sdo) sdo.ObjectiveState(true, objectiveIndex);
         }
 
         public virtual void OnObjectUnsnappedFromDropZone(SnapDropZoneEventArgs e)
@@ -146,6 +153,8 @@ namespace VRTK
             {
                 ObjectUnsnappedFromDropZone(this, e);
             }
+            //==Amarillo==
+            if (sdo) sdo.ObjectiveState(false, objectiveIndex);
         }
 
         public virtual SnapDropZoneEventArgs SetSnapDropZoneEvent(GameObject interactableObject)

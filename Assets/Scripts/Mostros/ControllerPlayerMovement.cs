@@ -10,7 +10,7 @@ public class ControllerPlayerMovement : MonoBehaviour {
 
 	public float moveSpeed;
 	public float rotationSpeed;
-	private float _gravity = 5f;
+	//private float _gravity = 5f;
 	public float deadZone = 0.3f;
 
 	public bool canMove = true;
@@ -31,7 +31,7 @@ public class ControllerPlayerMovement : MonoBehaviour {
 			Vector3 moveDirection = new Vector3(xMovement, 0, yMovement);
 			moveDirection = transform.TransformDirection(moveDirection);
 			moveDirection *= moveSpeed;
-			moveDirection.y -= _gravity;
+			moveDirection.y += Physics.gravity.y / 2f;
 			moveDirection.z = -moveDirection.z;
 			
 			_controller.Move(moveDirection * Time.deltaTime);

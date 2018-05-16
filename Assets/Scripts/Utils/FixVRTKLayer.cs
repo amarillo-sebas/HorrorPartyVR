@@ -7,9 +7,15 @@ public class FixVRTKLayer : MonoBehaviour {
 	public GameObject guiltyChild;
 	private Transform[] theChildren;
 
+	public bool fixHitboxes = false;
+
 	void Start () {
-		StartCoroutine(FixLayerTimer());
-		theChildren = GetComponentsInChildren<Transform>();
+		if (fixHitboxes) {
+			StartCoroutine(FixHitBoxes());
+		} else {
+			StartCoroutine(FixLayerTimer());
+			theChildren = GetComponentsInChildren<Transform>();
+		}
 	}
 
 	IEnumerator FixLayerTimer () {
@@ -23,5 +29,15 @@ public class FixVRTKLayer : MonoBehaviour {
 		foreach (Transform c in theChildren) {
 			c.gameObject.layer = LayerMask.NameToLayer(layerName);
 		}
+	}
+
+	IEnumerator FixHitBoxes () {
+		yield return null;
+		yield return null;
+		yield return null;
+		yield return null;
+		yield return null;
+		transform.GetChild(3).gameObject.layer = LayerMask.NameToLayer(layerName);
+		transform.GetChild(3).GetChild(0).gameObject.layer = LayerMask.NameToLayer(layerName);
 	}
 }

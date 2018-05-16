@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ControllerPlayerHP : MonoBehaviour {
-	public int maxHP = 100;
+	//public int maxHP = 100;
 	public int currentHP = 100;
 	public SoundsManager sm;
 
