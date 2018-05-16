@@ -16,15 +16,15 @@ public class MotherShipMissionManager : MonoBehaviour {
 	}
 
 	public void StartSelfDestructCountdown () {
-		StartCoroutine(SelfDestructCountdown(2f));
+		StartCoroutine(SelfDestructCountdown(4f));
 		audioManager.StartSelfDestructCountdown();
 	}
 	IEnumerator SelfDestructCountdown (float t) {
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(t);
 		if (selfDestructSeconds >= 0) audioManager.PlayClip(audioManager.selfDestructCountdownClips[selfDestructSeconds]);
 		selfDestructSeconds--;
 
-		if (selfDestructSeconds < 0) {
+		if (selfDestructSeconds < -1) {
 			SelfDestruct();
 		} else {
 			StartCoroutine(SelfDestructCountdown(2f));
@@ -32,10 +32,11 @@ public class MotherShipMissionManager : MonoBehaviour {
 	}
 
 	public void SelfDestruct () {
+		audioManager.EndCountdown();
 		StartCoroutine(WaitToSelfDestruct());
 	}
 	IEnumerator WaitToSelfDestruct () {
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(3f);
 		Physics.gravity = Vector3.zero;
 		Instantiate(explosionsPrefab);
 		yield return new WaitForSeconds(0.25f);

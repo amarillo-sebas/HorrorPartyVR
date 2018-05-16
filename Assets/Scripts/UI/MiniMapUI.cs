@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MiniMapUI : MonoBehaviour {
 	public PlayerHP hp;
 	public PlayerItems items;
 
-	public Text txtHP;
-	public Text txtAmmo;
+	public TextMeshProUGUI txtHP;
+	public TextMeshProUGUI txtAmmo;
 
 	private float weirdError = 0f;
 	private bool ready = false;

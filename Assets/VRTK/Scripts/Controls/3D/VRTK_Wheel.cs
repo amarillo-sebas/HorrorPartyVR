@@ -40,7 +40,7 @@ namespace VRTK
         public float grabbedFriction = 25f;
         [Tooltip("The amount of friction the wheel will have when it is released.")]
         public float releasedFriction = 10f;
-        [Range(0f, 359f)]
+        //[Range(0f, 359f)]
         [Tooltip("The maximum angle the wheel has to be turned to reach it's maximum value.")]
         public float maxAngle = 359f;
         [Tooltip("If this is checked then the wheel cannot be turned beyond the minimum and maximum value.")]

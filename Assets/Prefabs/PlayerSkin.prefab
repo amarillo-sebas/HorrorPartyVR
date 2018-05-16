@@ -537,11 +537,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1c8d3bd9bae4344cb537c5f91426961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hurtSounds:
-  - {fileID: 8300000, guid: 9673b20786824bd409ad1eff754718be, type: 3}
-  - {fileID: 8300000, guid: af2c95da88ca58340aa9b466626358d1, type: 3}
-  - {fileID: 8300000, guid: ec8532806a18e3b43a9fdfc02bd26b90, type: 3}
   playerAudioSource: {fileID: 82227551455200302}
+  hurtSounds:
+  - {fileID: 8300000, guid: faf947ec16a8abe47b293ee6a1c9dc47, type: 3}
+  - {fileID: 8300000, guid: cddfc47ce7de780429a924471a489234, type: 3}
+  - {fileID: 8300000, guid: fda0e272f6dd3204395d0f49b349b269, type: 3}
+  - {fileID: 8300000, guid: 1256430ca2e1bca4b95b0f142f793770, type: 3}
+  - {fileID: 8300000, guid: 314f5758ee59cf84e941d6be72d78121, type: 3}
+  deathSounds:
+  - {fileID: 8300000, guid: d97a7a2f8e221d94db442458f7f1cee6, type: 3}
+  - {fileID: 8300000, guid: bcd7cc52967b93348a0ad9b011148f45, type: 3}
+  - {fileID: 8300000, guid: 389e84c24e3a25243b7e62ca24ddf169, type: 3}
 --- !u!114 &114237699110760732
 MonoBehaviour:
   m_ObjectHideFlags: 1
