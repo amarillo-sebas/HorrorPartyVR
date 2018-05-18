@@ -36,12 +36,12 @@ public class SoundsManager : MonoBehaviour {
 	}
 
 	public void Attack () {
-		PlayClip(voiceAudioSource, attackClips, 0.7f, 1f);
-		/*int r = Random.Range(0, attackClips.Length);
+		//PlayClip(voiceAudioSource, attackClips, 0.7f, 1f);
+		int r = Random.Range(0, attackClips.Length);
 		voiceAudioSource.clip = attackClips[r];
 		float p = Random.Range(0.7f, 1f);
 		voiceAudioSource.pitch = p;
-		voiceAudioSource.Play();*/
+		voiceAudioSource.Play();
 	}
 
 	public void TakeDamage () {

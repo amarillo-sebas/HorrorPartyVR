@@ -35,4 +35,11 @@ public class ControllerPlayerHP : MonoBehaviour {
 		}
 		Destroy(gameObject);
 	}
+
+	/*void OnParticleCollision(GameObject ps) {
+		InteractableFlameThrower ift = ps.transform.parent.GetComponent<InteractableFlameThrower>();
+
+		TakeDamage();
+	}*/
+
 }

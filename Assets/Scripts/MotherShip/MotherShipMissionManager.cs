@@ -9,6 +9,9 @@ public class MotherShipMissionManager : MonoBehaviour {
 	public GameObject[] world;
 	public GameObject destructionDebris;
 	public GameObject explosionsPrefab;
+
+	public AirlocksManager airlocks;
+	public EscapeShipsManager escapeShips;
 	
 	public void StartMission () {
 		displayObjectiveLocations = true;
@@ -16,6 +19,10 @@ public class MotherShipMissionManager : MonoBehaviour {
 	}
 
 	public void StartSelfDestructCountdown () {
+		int r = Random.Range(0, airlocks.escapeAirlocks.Length);
+		airlocks.PrepareEscape(r);
+		escapeShips.PrepareEscape(r);
+
 		StartCoroutine(SelfDestructCountdown(4f));
 		audioManager.StartSelfDestructCountdown();
 	}
