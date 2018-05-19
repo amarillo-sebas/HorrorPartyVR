@@ -473,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackForce: 10
   upAttackForce: 1
-  attackCooldown: 5
+  attackCooldown: 4
   attackDamage: 10
   attackRange: 3.5
   hitMask:

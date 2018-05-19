@@ -445,7 +445,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1480583090238880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 1.228, z: -7.714}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4428067611557128}
@@ -1393,18 +1393,20 @@ MonoBehaviour:
   usingState: 0
   ps: {fileID: 198599802313194954}
   light: {fileID: 0}
+  littleFlame: {fileID: 198270261694708824}
   col: {fileID: 65634067834797474}
   txtAmmo: {fileID: 114375099252485250}
-  ammo: 200
-  maxAmmo: 200
+  ammo: 150
+  maxAmmo: 150
   fireRate: 0.025
   ammoRecoveryRate: 0.5
   audioS: {fileID: 82746831034883706}
   clips:
   - {fileID: 8300000, guid: 44316a71475b1c04d8661bcde64099ca, type: 3}
   - {fileID: 8300000, guid: 1d6ae2e78df28b34688478a3f4f1089e, type: 3}
-  damage: 1
+  damage: 2
   damageRate: 0.1
+  canRegenerateAmmo: 0
 --- !u!198 &198270261694708824
 ParticleSystem:
   m_ObjectHideFlags: 1

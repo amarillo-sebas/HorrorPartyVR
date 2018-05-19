@@ -8,6 +8,7 @@ using TMPro;
 public class InteractableFlameThrower : VRTK_InteractableObject {
 	public ParticleSystem ps;
 	public ParticleSystem light;
+	public ParticleSystem littleFlame;
 	public Collider col;
 
 	public TextMeshProUGUI txtAmmo;
@@ -29,16 +30,18 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 	public int damage = 1;
 	public float damageRate = 0.1f;
 
+	public bool canRegenerateAmmo = true;
+
 	public override void StartUsing(VRTK_InteractUse usingObject) {
 		base.StartUsing(usingObject);
-		if (ammo > 5) {
+		//if (ammo > 5) {
 			//ps.Play();
 			//if (light) light.Play();
 			//_firing = true;
 			audioS.clip = clips[0];
 			audioS.Play();
 			_canFire = true;
-		}
+		//}
 	}
 
 	public override void StopUsing(VRTK_InteractUse usingObject) {
@@ -62,7 +65,7 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 			}
 		}
 
-		if (Time.time >= ammoRecoveryCounter && ammo <= maxAmmo) {
+		if (Time.time >= ammoRecoveryCounter && ammo <= maxAmmo && canRegenerateAmmo) {
 			ammoSpent++;
 			ammoRecoveryCounter = Time.time + ammoRecoveryRate;
 		}
@@ -76,8 +79,9 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 			//audioS.clip = clips[1];
 			//ps.Stop();
 			//if (light) light.Stop();
-		} else if (ammo > 100) {
-			ammo = 100;
+			littleFlame.Stop();
+		} else if (ammo > maxAmmo) {
+			ammo = maxAmmo;
 		}
 
 		txtAmmo.text = ammo + "";

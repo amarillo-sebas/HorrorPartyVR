@@ -17,6 +17,10 @@ TagManager:
   - Saucers
   - Torso
   - OtherSaucers
+  - ImportantObjectSpawner
+  - SecondaryObjectSpawner
+  - PickUpObjects
+  - PlayerSpawn
   layers:
   - Default
   - TransparentFX

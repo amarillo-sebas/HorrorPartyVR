@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4105876075443460}
   - component: {fileID: 33805474362954300}
-  - component: {fileID: 65717496329727480}
   - component: {fileID: 23797816978631056}
+  - component: {fileID: 65917648743266006}
   m_Layer: 16
   m_Name: Cube
   m_TagString: Untagged
@@ -265,7 +265,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!65 &65717496329727480
+--- !u!65 &65917648743266006
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -429,4 +429,4 @@ MonoBehaviour:
   allowedUseControllers: 0
   usingState: 0
   light: {fileID: 108562100950164412}
-  col: {fileID: 65717496329727480}
+  col: {fileID: 0}
