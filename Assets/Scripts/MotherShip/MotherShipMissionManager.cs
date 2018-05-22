@@ -13,6 +13,10 @@ public class MotherShipMissionManager : MonoBehaviour {
 	public AirlocksManager airlocks;
 	public EscapeShipsManager escapeShips;
 	
+	public void Start () {
+		Cursor.visible = false;
+	}
+
 	public void StartMission () {
 		displayObjectiveLocations = true;
 		audioManager.StartMission();
