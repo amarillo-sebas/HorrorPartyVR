@@ -8,11 +8,13 @@ public class InteractableFlashlight : VRTK_InteractableObject {
 	public Collider col;
 
 	public override void StartUsing(VRTK_InteractUse usingObject) {
+		Debug.Log("InteractableFlashlight: StartUsing");
 		base.StartUsing(usingObject);
 		light.enabled = true;
 	}
 
 	public override void StopUsing(VRTK_InteractUse usingObject) {
+		Debug.Log("InteractableFlashlight: StopUsing");
 		base.StopUsing(usingObject);
 		light.enabled = false;
 	}

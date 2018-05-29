@@ -6,7 +6,7 @@ using VRTK;
 using TMPro;
 
 public class InteractableFlameThrower : VRTK_InteractableObject {
-	public ParticleSystem ps;
+	public ParticleSystem[] ps;
 	public ParticleSystem light;
 	public ParticleSystem littleFlame;
 	public Collider col;
@@ -34,22 +34,15 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 
 	public override void StartUsing(VRTK_InteractUse usingObject) {
 		base.StartUsing(usingObject);
-		//if (ammo > 5) {
-			//ps.Play();
-			//if (light) light.Play();
-			//_firing = true;
-			audioS.clip = clips[0];
-			audioS.Play();
-			_canFire = true;
-		//}
+		Debug.Log("InteractableFlameThrower: StartUsing");
+		audioS.clip = clips[0];
+		audioS.Play();
+		_canFire = true;
 	}
 
 	public override void StopUsing(VRTK_InteractUse usingObject) {
 		base.StopUsing(usingObject);
-		//ps.Stop();
-		//if (light) light.Stop();
-		//_firing = false;
-		//audioS.Stop();
+		Debug.Log("InteractableFlameThrower: StopUsing");
 		_canFire = false;
 	}
 
@@ -76,9 +69,6 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 			ammo = 0;
 
 			_canFire = false;
-			//audioS.clip = clips[1];
-			//ps.Stop();
-			//if (light) light.Stop();
 			littleFlame.Stop();
 		} else if (ammo > maxAmmo) {
 			ammo = maxAmmo;
@@ -87,12 +77,17 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 		txtAmmo.text = ammo + "";
 
 		if (_canFire) {
-			ps.Play();
+			foreach (ParticleSystem p in ps) {
+				var em = p.emission;
+				em.enabled = true;
+			}
 			if (light) light.Play();
 			_firing = true;
-			//audioS.Play();
 		} else {
-			ps.Stop();
+			foreach (ParticleSystem p in ps) {
+				var em = p.emission;
+				em.enabled = false;
+			}
 			if (light) light.Stop();
 			_firing = false;
 			audioS.Stop();
