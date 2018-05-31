@@ -6,31 +6,36 @@ public class MissionObjectSpawner : MonoBehaviour {
 	public GameObject importantObject;
 	public GameObject[] secondaryObjects;
 	public GameObject[] optionalObjects;
+	public GameObject startingRoom;
 	public GameObject[] importantObjectSpawns;
 	public GameObject[] secondaryObjectSpawns;
 	public GameObject[] pickUpObjectSpawns;
+	public GameObject[] startingRoomsSpawns;
 	private int[] _randomSecondarySpawns;
 	private int[] _randomOptionalSpawns;
 
 	public bool spawnBothInSecondary = false;
 
 	public GameObject playerPrefab;
-	public GameObject[] playerSpawns;
+	private GameObject[] _playerSpawns;
 
 	void Start () {
 		importantObjectSpawns = GameObject.FindGameObjectsWithTag("ImportantObjectSpawner");
 		secondaryObjectSpawns = GameObject.FindGameObjectsWithTag("SecondaryObjectSpawner");
 		pickUpObjectSpawns = GameObject.FindGameObjectsWithTag("PickUpObjects");
-		playerSpawns = GameObject.FindGameObjectsWithTag("PlayerSpawn");
+
+		int srR = Random.Range(0, startingRoomsSpawns.Length);
+		for (int sr = 0; sr < startingRoomsSpawns.Length; sr++) {
+			GameObject room = Instantiate(startingRoom, startingRoomsSpawns[sr].transform.position, startingRoomsSpawns[sr].transform.rotation);
+			room.transform.parent = transform;
+			if (sr == srR) {
+				room.GetComponent<StartingRoomSpawnManager>().spawnContents = true;
+			}
+		}
 
 		int iR = Random.Range(0, importantObjectSpawns.Length);
 		GameObject important = Instantiate(importantObject, importantObjectSpawns[iR].transform.position, importantObjectSpawns[iR].transform.rotation);
 		important.transform.parent = transform;
-
-		int pR = Random.Range(0, playerSpawns.Length);
-		playerPrefab.transform.position = playerSpawns[pR].transform.position;
-		//playerPrefab.transform.rotation = playerSpawns[pR].transform.rotation;
-		//Instantiate(playerPrefab, playerSpawns[pR].transform.position, playerSpawns[pR].transform.rotation);
 
 		if (!spawnBothInSecondary) {
 			_randomSecondarySpawns = new int[secondaryObjectSpawns.Length];
@@ -39,7 +44,7 @@ public class MissionObjectSpawner : MonoBehaviour {
 			}
 			_randomSecondarySpawns = ShuffleArray(_randomSecondarySpawns);
 			for (int i = 0; i < secondaryObjects.Length; i++) {
-				Instantiate(secondaryObjects[i], secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.position, secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.rotation);
+				Instantiate(secondaryObjects[i], secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.position, secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.rotation).transform.parent = transform;;
 			}
 			
 			_randomOptionalSpawns = new int[pickUpObjectSpawns.Length];
@@ -48,7 +53,7 @@ public class MissionObjectSpawner : MonoBehaviour {
 			}
 			_randomOptionalSpawns = ShuffleArray(_randomOptionalSpawns);
 			for (int i = 0; i < optionalObjects.Length; i++) {
-				Instantiate(optionalObjects[i], pickUpObjectSpawns[_randomOptionalSpawns[i]].transform.position, pickUpObjectSpawns[_randomOptionalSpawns[i]].transform.rotation);
+				Instantiate(optionalObjects[i], pickUpObjectSpawns[_randomOptionalSpawns[i]].transform.position, pickUpObjectSpawns[_randomOptionalSpawns[i]].transform.rotation).transform.parent = transform;;
 			}
 		} else {
 			_randomSecondarySpawns = new int[secondaryObjectSpawns.Length];
@@ -58,14 +63,26 @@ public class MissionObjectSpawner : MonoBehaviour {
 			_randomSecondarySpawns = ShuffleArray(_randomSecondarySpawns);
 			for (int i = 0; i < secondaryObjects.Length + optionalObjects.Length; i++) {
 				if (i < secondaryObjects.Length) {
-					Instantiate(secondaryObjects[i], secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.position, secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.rotation);
+					Instantiate(secondaryObjects[i], secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.position, secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.rotation).transform.parent = transform;;
 				} else {
-				 	Instantiate(optionalObjects[i - secondaryObjects.Length], secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.position, secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.rotation);
+				 	Instantiate(optionalObjects[i - secondaryObjects.Length], secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.position, secondaryObjectSpawns[_randomSecondarySpawns[i]].transform.rotation).transform.parent = transform;;
 				}
 			}
 		}
+		
+		//important.transform.parent = transform;
+
+		StartCoroutine(SpawnPlayer());
 
 		//Destroy(gameObject);
+	}
+
+	IEnumerator SpawnPlayer () {
+		yield return null;
+		_playerSpawns = GameObject.FindGameObjectsWithTag("PlayerSpawn");
+		int pR = Random.Range(0, _playerSpawns.Length);
+		//Debug.Log(_playerSpawns.Length + " caca " + pR);
+		playerPrefab.transform.position = _playerSpawns[pR].transform.position;
 	}
 
 	int[] ShuffleArray(int[] array) {

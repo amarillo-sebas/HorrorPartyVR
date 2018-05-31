@@ -9,7 +9,11 @@ public class DoorCloser : MonoBehaviour {
 	public bool runningCoroutine = false;
 
 	void OnTriggerExit (Collider c) {
-		if (!runningCoroutine) if (c.transform.name == "[VRTK][AUTOGEN][HeadsetColliderContainer]") StartCoroutine(WaitToCloseDoor(timeToCloseDoor));
+		//[VRTK][AUTOGEN][HeadsetColliderContainer]
+		if (!runningCoroutine) if (c.transform.name == "[VRTK][AUTOGEN][BodyColliderContainer]") {
+			StartCoroutine(WaitToCloseDoor(timeToCloseDoor));
+			c.GetComponent<PlayerTiggerEvents>().TriggerEvent();
+		}
 	}
 
 	IEnumerator WaitToCloseDoor (float t) {

@@ -66,4 +66,10 @@ public class DoorWheel : MonoBehaviour {
 		r = low2 + (value - low1) * (high2 - low2) / (high1 - low1);
 		return r;
 	}
+
+	public void BlastOff () {
+		Destroy(GetComponent<HingeJoint>());
+		Destroy(GetComponent<Rigidbody>());
+		Destroy(GetComponent<Collider>());
+	}
 }

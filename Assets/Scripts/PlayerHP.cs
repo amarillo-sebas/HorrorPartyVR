@@ -16,6 +16,8 @@ public class PlayerHP : MonoBehaviour {
 
 	public Transform hpCanvas;
 
+	public bool safeFromVacuum = false;
+
 	void Start () {
 		_playerAudio = GetComponent<PlayerSkinAudioManager>();
 	}

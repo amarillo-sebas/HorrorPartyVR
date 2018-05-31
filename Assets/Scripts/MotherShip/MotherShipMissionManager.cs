@@ -48,9 +48,14 @@ public class MotherShipMissionManager : MonoBehaviour {
 	}
 	IEnumerator WaitToSelfDestruct () {
 		yield return new WaitForSeconds(3f);
-		Physics.gravity = Vector3.zero;
+		//Physics.gravity = Vector3.zero;
 		Instantiate(explosionsPrefab);
 		yield return new WaitForSeconds(0.25f);
+
+		pHP = FindObjectOfType(typeof(PlayerHP)) as PlayerHP;
+		mHP = FindObjectsOfType(typeof(ControllerPlayerHP)) as ControllerPlayerHP[];
+		StartCoroutine(HurtPlayers(1f));
+
 		foreach (GameObject go in world) {
 			go.SetActive(false);
 		}
@@ -64,5 +69,16 @@ public class MotherShipMissionManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.O)) {
 			StartSelfDestructCountdown();
 		}
+	}
+
+	private PlayerHP pHP;
+	private ControllerPlayerHP[] mHP;
+	IEnumerator HurtPlayers (float t) {
+		if (pHP) if (pHP.currentHP > 0 && !pHP.safeFromVacuum) pHP.TakeDamage(10);
+		foreach (ControllerPlayerHP mostroHP in mHP) {
+			if (mostroHP) if (mostroHP.currentHP > 0) mostroHP.TakeDamage(10);
+		}
+		yield return new WaitForSeconds(t);
+		StartCoroutine(HurtPlayers(t));
 	}
 }

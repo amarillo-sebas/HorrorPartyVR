@@ -144,7 +144,7 @@ namespace VRTK
 
         protected virtual void InteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
         {
-            leverRigidbody.angularDrag = releasedFriction;
+            if (leverRigidbody) leverRigidbody.angularDrag = releasedFriction;
         }
 
         protected virtual void InitHingeJoint()
@@ -169,12 +169,14 @@ namespace VRTK
 
         protected virtual float CalculateValue()
         {
-            return Mathf.Round((leverHingeJoint.angle) / stepSize) * stepSize;
+            if (leverHingeJoint) return Mathf.Round((leverHingeJoint.angle) / stepSize) * stepSize;
+            else return 0f;
         }
 
         protected virtual void SnapToValue(float value)
         {
-            float angle = ((value - minAngle) / (maxAngle - minAngle)) * (leverHingeJoint.limits.max - leverHingeJoint.limits.min);
+            float angle = 0f;
+            if (leverHingeJoint) angle = ((value - minAngle) / (maxAngle - minAngle)) * (leverHingeJoint.limits.max - leverHingeJoint.limits.min);
 
             // TODO: there is no direct setter, one recommendation by Unity staff is to "abuse" min/max which seems the most reliable but not working so far
             JointLimits oldLimits = leverHingeJoint.limits;

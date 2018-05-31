@@ -225,13 +225,13 @@ namespace VRTK
 
         protected virtual void WheelInteractableObjectGrabbed(object sender, InteractableObjectEventArgs e)
         {
-            wheelRigidbody.angularDrag = grabbedFriction;
-            wheelHinge.useSpring = false;
+            if (wheelRigidbody) wheelRigidbody.angularDrag = grabbedFriction;
+            if (wheelHinge) wheelHinge.useSpring = false;
         }
 
         protected virtual void WheelInteractableObjectUngrabbed(object sender, InteractableObjectEventArgs e)
         {
-            wheelRigidbody.angularDrag = releasedFriction;
+            if (wheelRigidbody) wheelRigidbody.angularDrag = releasedFriction;
             if (snapToStep)
             {
                 wheelHinge.useSpring = true;
