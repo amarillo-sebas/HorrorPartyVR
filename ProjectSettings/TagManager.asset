@@ -10,17 +10,11 @@ TagManager:
   - PlayerHands
   - Explosion
   - Mostro
-  - Cubes
-  - Spheres
-  - Leg
-  - Arm
-  - Saucers
-  - Torso
-  - OtherSaucers
   - ImportantObjectSpawner
   - SecondaryObjectSpawner
   - PickUpObjects
   - PlayerSpawn
+  - UICamera
   layers:
   - Default
   - TransparentFX

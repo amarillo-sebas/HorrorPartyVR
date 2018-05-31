@@ -17,7 +17,7 @@ public class ExplosionSpawner : MonoBehaviour {
 		numberOfExplosions--;
 		if (numberOfExplosions >= 0) {
 			int r = Random.Range(0, explosionSpawners.Length);
-			Destroy(Instantiate(explosionPrefab, explosionSpawners[r].position, explosionSpawners[r].rotation), 5f);
+			Destroy(Instantiate(explosionPrefab, explosionSpawners[r].position, Random.rotation), 5f);
 			float i = Random.Range(explosionIntervalMin, explosionIntervalMax);
 			StartCoroutine(ExplosionTimer(i));
 		}

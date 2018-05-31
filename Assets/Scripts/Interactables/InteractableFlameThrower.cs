@@ -34,7 +34,7 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 
 	public override void StartUsing(VRTK_InteractUse usingObject) {
 		base.StartUsing(usingObject);
-		Debug.Log("InteractableFlameThrower: StartUsing");
+		//Debug.Log("InteractableFlameThrower: StartUsing");
 		audioS.clip = clips[0];
 		audioS.Play();
 		_canFire = true;
@@ -42,7 +42,7 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 
 	public override void StopUsing(VRTK_InteractUse usingObject) {
 		base.StopUsing(usingObject);
-		Debug.Log("InteractableFlameThrower: StopUsing");
+		//Debug.Log("InteractableFlameThrower: StopUsing");
 		_canFire = false;
 	}
 
@@ -80,6 +80,7 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 			foreach (ParticleSystem p in ps) {
 				var em = p.emission;
 				em.enabled = true;
+				p.Play();
 			}
 			if (light) light.Play();
 			_firing = true;
@@ -87,6 +88,7 @@ public class InteractableFlameThrower : VRTK_InteractableObject {
 			foreach (ParticleSystem p in ps) {
 				var em = p.emission;
 				em.enabled = false;
+				p.Stop();
 			}
 			if (light) light.Stop();
 			_firing = false;
