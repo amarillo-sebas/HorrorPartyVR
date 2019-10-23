@@ -12,6 +12,9 @@ public class MotherShipMissionManager : MonoBehaviour {
 
 	public AirlocksManager airlocks;
 	public EscapeShipsManager escapeShips;
+
+	public GameObject pauseScreen;
+	private bool _gameEnded;
 	
 	public void Start () {
 		Cursor.visible = false;
@@ -60,14 +63,41 @@ public class MotherShipMissionManager : MonoBehaviour {
 			go.SetActive(false);
 		}
 		destructionDebris.SetActive(true);
+
+		yield return new WaitForSeconds(5f);
+
+		_pause = true;
+		Time.timeScale = 0f;
+		_pauseGO = Instantiate(pauseScreen);
 	}
 
+	private bool _pause = false;
+	private GameObject _pauseGO;
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.P)) {
 			SelfDestruct();
 		}
 		if (Input.GetKeyDown(KeyCode.O)) {
 			StartSelfDestructCountdown();
+		}
+
+		if (Input.GetButtonDown("Start")) {
+			if (!_pause) {
+				_pause = true;
+				Time.timeScale = 0f;
+				_pauseGO = Instantiate(pauseScreen);
+			} else if (!_gameEnded) {
+				_pause = false;
+				Time.timeScale = 1f;
+				Destroy(_pauseGO);
+			}
+		}
+		if (Input.GetButtonDown("Cancel")) {
+			if (_pause && !_gameEnded) {
+				_pause = false;
+				Time.timeScale = 1f;
+				Destroy(_pauseGO);
+			}
 		}
 	}
 

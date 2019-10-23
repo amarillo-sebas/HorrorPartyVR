@@ -20,7 +20,7 @@ public class ControllerPlayerAttack : MonoBehaviour {
 
 	public LayerMask hitMask;
 
-	public string EnemyType;
+	public MonsterType EnemyType;
 
 	void Start () {
 		_id = GetComponent<ControllerPlayerID>();
@@ -32,10 +32,10 @@ public class ControllerPlayerAttack : MonoBehaviour {
 		if (Input.GetButtonDown(_id.playerNumber + "_attack")) {
 			if (_canAttack) {
 				switch (EnemyType) {
-					case "papa":
+					case MonsterType.Papa:
 						Attack_PAPA();
 					break;
-					case "emo":
+					case MonsterType.Emo:
 						Attack_EMO();
 					break;
 				}
