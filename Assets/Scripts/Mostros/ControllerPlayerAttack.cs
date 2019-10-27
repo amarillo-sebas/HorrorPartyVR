@@ -12,7 +12,7 @@ public class ControllerPlayerAttack : MonoBehaviour {
 	public float attackCooldown;
 	public int attackDamage;
 
-	private bool _canAttack = true;
+	private bool _canAttack = false;
 	private bool _canCheckHit = false;
 	public float attackRange = 1.5f;
 
@@ -26,17 +26,25 @@ public class ControllerPlayerAttack : MonoBehaviour {
 		_id = GetComponent<ControllerPlayerID>();
 		_impactEnforcer = GetComponent<CharacterControllerImpactEnforcer>();
 		_animationManager = GetComponent<AnimationManager>();
+
+		StartCoroutine(GameStart());
 	}
 	
 	void Update () {
 		if (Input.GetButtonDown(_id.playerNumber + "_attack")) {
 			if (_canAttack) {
 				switch (EnemyType) {
-					case MonsterType.Papa:
-						Attack_PAPA();
+					case MonsterType.Drone:
+						Attack_DRONE();
 					break;
-					case MonsterType.Emo:
-						Attack_EMO();
+					case MonsterType.Brain:
+						Attack_BRAIN();
+					break;
+					case MonsterType.Priest:
+						Attack_PRIEST();
+					break;
+					case MonsterType.Hatcher:
+						Attack_HATCHER();
 					break;
 				}
 			}
@@ -56,7 +64,7 @@ public class ControllerPlayerAttack : MonoBehaviour {
 		}
 	}
 
-	void Attack_PAPA () {
+	void Attack_DRONE () {
 		_canAttack = false;
 		_canCheckHit = true;
 
@@ -68,7 +76,7 @@ public class ControllerPlayerAttack : MonoBehaviour {
 
 		StartCoroutine(AttackCooldown());
 	}
-	void Attack_EMO () {
+	void Attack_BRAIN () {
 		_canAttack = false;
 
 		GetComponent<SoundsManager>().Attack();
@@ -76,6 +84,23 @@ public class ControllerPlayerAttack : MonoBehaviour {
 
 		StartCoroutine(AttackCooldown());
 	}
+	void Attack_PRIEST () {
+		_canAttack = false;
+
+		GetComponent<SoundsManager>().Attack();
+		_animationManager.anim.SetTrigger("attack");
+
+		StartCoroutine(AttackCooldown());
+	}
+	void Attack_HATCHER () {
+		_canAttack = false;
+
+		GetComponent<SoundsManager>().Attack();
+		_animationManager.anim.SetTrigger("attack");
+
+		StartCoroutine(AttackCooldown());
+	}
+
 	public void Attack_StartCheck () {
 		_canCheckHit = true;
 	}
@@ -87,5 +112,17 @@ public class ControllerPlayerAttack : MonoBehaviour {
 		yield return new WaitForSeconds(attackCooldown);
 		_canAttack = true;
 		_canCheckHit = false;
+	}
+
+	IEnumerator GameStart () {
+		yield return new WaitForSeconds(0.25f);
+		_canAttack = true;
+	}
+
+	public void StartAttack () {
+		_animationManager.anim.SetBool("attacking", true);
+	}
+	public void EndAttack () {
+		_animationManager.anim.SetBool("attacking", false);
 	}
 }

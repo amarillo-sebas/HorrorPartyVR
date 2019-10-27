@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca7f941a75113546bdeff57df757507, type: 3}
+  m_Name: Hatcher
+  m_EditorClassIdentifier: 
+  name: Egg Hatcher
+  uiImage: {fileID: 21300000, guid: d19da8917fd46fe42ab9de1a63dd3e19, type: 3}
+  monsterPrefab: {fileID: 1541074652902746, guid: f8f409c03572ca74f8c43cd1c407a33d,
+    type: 2}
+  monsterType: 3

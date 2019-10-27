@@ -409,13 +409,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1866886023128042}
-  m_LocalRotation: {x: 0.2588186, y: -0, z: -0, w: 0.965926}
+  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4307184407540676}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 30.000002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
 --- !u!4 &4243250843845542
 Transform:
   m_ObjectHideFlags: 1
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   unhighlightOnDisable: 1
   thickness: 0.5
   customOutlineModels:
-  - {fileID: 1865055214605894}
+  - {fileID: 1845138667138338}
   customOutlineModelPaths: []
   enableSubmeshHighlight: 0
 --- !u!114 &114669848615365984
@@ -10581,7 +10581,7 @@ ParticleSystem:
     radiusScale: 0.05
     collidesWith:
       serializedVersion: 2
-      m_Bits: 11265
+      m_Bits: 273409
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5

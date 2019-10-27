@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 1051fbde9b936ea4eb02c6b357e25231
+timeCreated: 1572056648
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Brain_ZB
+    100004: CATRigHub004
+    100006: CATRigHub004Bone001
+    100008: CATRigHub004Bone001Bone001
+    100010: CATRigHub004Bone001Bone002
+    100012: CATRigTail1
+    100014: CATRigTail1 1
+    100016: CATRigTail1 2
+    100018: CATRigTail1 3
+    100020: CATRigTail1 4
+    100022: CATRigTail1 5
+    100024: CATRigTail2
+    100026: CATRigTail2 1
+    100028: CATRigTail2 2
+    100030: CATRigTail2 3
+    100032: CATRigTail2 4
+    100034: CATRigTail2 5
+    100036: CATRigTail3
+    100038: CATRigTail3 1
+    100040: CATRigTail3 2
+    100042: CATRigTail3 3
+    100044: CATRigTail3 4
+    100046: CATRigTail3 5
+    100048: CATRigTail4
+    100050: CATRigTail4 1
+    100052: CATRigTail4 2
+    100054: CATRigTail4 3
+    100056: CATRigTail5
+    100058: CATRigTail5 1
+    100060: CATRigTail6
+    100062: CATRigTail6 1
+    400000: //RootNode
+    400002: Brain_ZB
+    400004: CATRigHub004
+    400006: CATRigHub004Bone001
+    400008: CATRigHub004Bone001Bone001
+    400010: CATRigHub004Bone001Bone002
+    400012: CATRigTail1
+    400014: CATRigTail1 1
+    400016: CATRigTail1 2
+    400018: CATRigTail1 3
+    400020: CATRigTail1 4
+    400022: CATRigTail1 5
+    400024: CATRigTail2
+    400026: CATRigTail2 1
+    400028: CATRigTail2 2
+    400030: CATRigTail2 3
+    400032: CATRigTail2 4
+    400034: CATRigTail2 5
+    400036: CATRigTail3
+    400038: CATRigTail3 1
+    400040: CATRigTail3 2
+    400042: CATRigTail3 3
+    400044: CATRigTail3 4
+    400046: CATRigTail3 5
+    400048: CATRigTail4
+    400050: CATRigTail4 1
+    400052: CATRigTail4 2
+    400054: CATRigTail4 3
+    400056: CATRigTail5
+    400058: CATRigTail5 1
+    400060: CATRigTail6
+    400062: CATRigTail6 1
+    2100000: 'Material #51'
+    2100002: 'Material #27'
+    4300000: Brain_ZB
+    7400000: Brain_Idle_Move
+    9500000: //RootNode
+    13700000: Brain_ZB
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Brain_Idle_Move
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

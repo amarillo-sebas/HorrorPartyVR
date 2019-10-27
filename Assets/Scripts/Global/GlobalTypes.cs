@@ -1,4 +1,6 @@
 ﻿public enum MonsterType {
-	Papa,
-	Emo
+	Drone,
+	Brain,
+	Priest,
+	Hatcher
 }

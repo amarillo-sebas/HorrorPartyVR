@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ControllerPlayerHP : MonoBehaviour {
-	//public int maxHP = 100;
+	private int _maxHP;
 	public int currentHP = 100;
 	public SoundsManager sm;
 
@@ -12,8 +12,10 @@ public class ControllerPlayerHP : MonoBehaviour {
 
 	public GameObject psDeath;
 
+	public bool isEgg = false;
 	void Start () {
 		sm = GetComponent<SoundsManager>();
+		_maxHP = currentHP;
 	}
 	
 	void Update () {
@@ -25,7 +27,7 @@ public class ControllerPlayerHP : MonoBehaviour {
 		if (currentHP <= 0) {
 			Die();
 		} else {
-			sm.TakeDamage();
+			if (sm) sm.TakeDamage();
 		}
 	}
 
@@ -33,7 +35,13 @@ public class ControllerPlayerHP : MonoBehaviour {
 		if (psDeath) {
 			Destroy(Instantiate(psDeath, transform.position, transform.rotation), 5f);
 		}
+		if (isEgg) GetComponent<HatcherEgg>().EggDestroy();
 		Destroy(gameObject);
+	}
+
+	public void Heal (int h) {
+		currentHP += h;
+		if (currentHP >= _maxHP) currentHP = _maxHP;
 	}
 
 	/*void OnParticleCollision(GameObject ps) {
