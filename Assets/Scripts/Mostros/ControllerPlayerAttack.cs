@@ -22,6 +22,8 @@ public class ControllerPlayerAttack : MonoBehaviour {
 
 	public MonsterType EnemyType;
 
+	public ControllerPlayerHP hp;
+
 	void Start () {
 		_id = GetComponent<ControllerPlayerID>();
 		_impactEnforcer = GetComponent<CharacterControllerImpactEnforcer>();
@@ -31,35 +33,37 @@ public class ControllerPlayerAttack : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (Input.GetButtonDown(_id.playerNumber + "_attack")) {
-			if (_canAttack) {
-				switch (EnemyType) {
-					case MonsterType.Drone:
-						Attack_DRONE();
-					break;
-					case MonsterType.Brain:
-						Attack_BRAIN();
-					break;
-					case MonsterType.Priest:
-						Attack_PRIEST();
-					break;
-					case MonsterType.Hatcher:
-						Attack_HATCHER();
-					break;
+		if (hp.isAlive) {
+			if (Input.GetButtonDown(_id.playerNumber + "_attack")) {
+				if (_canAttack) {
+					switch (EnemyType) {
+						case MonsterType.Drone:
+							Attack_DRONE();
+						break;
+						case MonsterType.Brain:
+							Attack_BRAIN();
+						break;
+						case MonsterType.Priest:
+							Attack_PRIEST();
+						break;
+						case MonsterType.Hatcher:
+							Attack_HATCHER();
+						break;
+					}
 				}
 			}
-		}
 
-		if (_canCheckHit) {
-			RaycastHit hit;
-			Vector3 origin = transform.position;
-			origin.y += 1f;
-			if (Physics.Raycast(origin, _id.skinTransform.forward, out hit, attackRange, hitMask)) {
-				Rigidbody rb = hit.transform.gameObject.GetComponent<PlayerSkinCommunicator>().rb;
-				if (rb) rb.AddForce(_id.skinTransform.forward * attackForce * 1500f);
-				PlayerHP hp = hit.transform.gameObject.GetComponent<PlayerHP>();
-				hp.TakeDamage(attackDamage);
-				_canCheckHit = false;
+			if (_canCheckHit) {
+				RaycastHit hit;
+				Vector3 origin = transform.position;
+				origin.y += 1f;
+				if (Physics.Raycast(origin, _id.skinTransform.forward, out hit, attackRange, hitMask)) {
+					Rigidbody rb = hit.transform.gameObject.GetComponent<PlayerSkinCommunicator>().rb;
+					if (rb) rb.AddForce(_id.skinTransform.forward * attackForce * 1500f);
+					PlayerHP hp = hit.transform.gameObject.GetComponent<PlayerHP>();
+					hp.TakeDamage(attackDamage);
+					_canCheckHit = false;
+				}
 			}
 		}
 	}

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundsManager : MonoBehaviour {
+public class SoundsManager : AudioManager {
 	public AudioClip[] voiceClips;
 	public AudioClip[] attackClips;
 	public AudioSource voiceAudioSource;
@@ -14,6 +14,8 @@ public class SoundsManager : MonoBehaviour {
 	public float speakMinTime;
 	public float speakMaxTime;
 
+	public ControllerPlayerHP hp;
+
 	void Start () {
 		StartCoroutine(Speak(1, 5));
 	}
@@ -21,10 +23,7 @@ public class SoundsManager : MonoBehaviour {
 	IEnumerator Speak (float minT, float maxT) {
 		float t = Random.Range(minT, maxT);
 		yield return new WaitForSeconds(t);
-		PlayClip(voiceAudioSource, voiceClips);
-		/*int r = Random.Range(0, voiceClips.Length);
-		voiceAudioSource.clip = voiceClips[r];
-		voiceAudioSource.Play();*/
+		if (hp.isAlive) PlayClip(voiceAudioSource, voiceClips);
 		StartCoroutine(Speak(speakMinTime, speakMaxTime));
 	}
 
@@ -56,7 +55,7 @@ public class SoundsManager : MonoBehaviour {
 	}
 
 	public void Die () {
-		PlayClip(voiceAudioSource, deathClips, 0.85f, 1f);
+		PlayClipAlways(voiceAudioSource, deathClips, 0.85f, 1f);
 		/*if (deathClips.Length > 0) {
 			int r = Random.Range(0, deathClips.Length);
 			voiceAudioSource.clip = deathClips[r];
@@ -66,7 +65,7 @@ public class SoundsManager : MonoBehaviour {
 		}*/
 	}
 
-	public void PlayClip (AudioSource a, AudioClip[] ac) {
+	/*public void PlayClip (AudioSource a, AudioClip[] ac) {
 		if (ac.Length > 0 && !a.isPlaying) {
 			int r = Random.Range(0, ac.Length);
 			a.clip = ac[r];
@@ -81,5 +80,5 @@ public class SoundsManager : MonoBehaviour {
 			a.pitch = p;
 			a.Play();
 		}
-	}
+	}*/
 }

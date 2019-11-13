@@ -7,6 +7,7 @@ using VRTK;
 
 public class PlayerHP : MonoBehaviour {
 	public int currentHP = 100;
+	private int _maxHP;
 	private PlayerSkinAudioManager _playerAudio;
 
 	public Slider sldHP;
@@ -18,13 +19,28 @@ public class PlayerHP : MonoBehaviour {
 
 	public bool safeFromVacuum = false;
 
+	public float regenTime;
+	public float regenRate;
+	private float _regenCooldown = 0f;
+	private float _regenRateCounter = 0f;
+
 	void Start () {
+		_maxHP = currentHP;
 		_playerAudio = GetComponent<PlayerSkinAudioManager>();
 	}
 
 	void Update () {
 		if (sldHP) sldHP.value = currentHP;
 		if (hpCanvas) hpCanvas.rotation = Quaternion.identity;
+
+		if (currentHP < _maxHP) {
+			if (_regenCooldown <= Time.time) {
+				if (_regenRateCounter <= Time.time) {
+					_regenRateCounter = Time.time + regenRate;
+					currentHP++;
+				}
+			}
+		}
 	}
 
 	public void TakeDamage (int d) {
@@ -35,6 +51,8 @@ public class PlayerHP : MonoBehaviour {
 			_playerAudio.Hurt();
 			if (cameraAnimator) cameraAnimator.SetTrigger("HurtPlayer");
 		}
+
+		_regenCooldown = Time.time + regenTime;
 	}
 
 	void Die () {

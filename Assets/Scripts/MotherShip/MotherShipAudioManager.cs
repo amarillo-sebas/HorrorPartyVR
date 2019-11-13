@@ -9,6 +9,7 @@ public class MotherShipAudioManager : MonoBehaviour {
 	public AudioClip[] selfDestructClips;
 	public AudioClip[] selfDestructCountdownClips;
 	public AudioClip[] thankClips;
+	public AudioClip[] lifeFormClips;
 
 	public void StartMission () {
 		PlayClip(missionStartClips);
@@ -20,6 +21,10 @@ public class MotherShipAudioManager : MonoBehaviour {
 
 	public void EndCountdown () {
 		PlayClip(thankClips);
+	}
+
+	public void PlayLifeForms () {
+		PlayClip(lifeFormClips);
 	}
 
 	public void PlayClip (AudioClip ac) {

@@ -8,6 +8,7 @@ public class AttackEffects : MonoBehaviour {
 	public ParticleSystem ps;
 	public PriestAttack priestAttack;
 	public HatcherAttack hatcherAttack;
+	public GameObject psDeath;
 
 	[Space(5f)]
 	[Header("Variables")]
@@ -19,7 +20,7 @@ public class AttackEffects : MonoBehaviour {
 				
 			break;
 			case MonsterType.Brain:
-				
+				ps.Play();
 			break;
 			case MonsterType.Priest:
 				priestAttack.Attack();
@@ -28,5 +29,16 @@ public class AttackEffects : MonoBehaviour {
 				hatcherAttack.Attack();
 			break;
 		}
+	}
+
+	public void PriestDie () {
+		gameObject.SetActive(false);
+		if (psDeath) {
+			Destroy(Instantiate(psDeath, transform.position, transform.rotation), 5f);
+		}
+	}
+
+	public void PriestRespawn () {
+		gameObject.SetActive(true);
 	}
 }

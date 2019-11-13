@@ -9,6 +9,9 @@ public class ItemSpawner : MonoBehaviour {
 
 	public PlayerItems items;
 
+	public bool tutorialPouch = false;
+	public GameObject tutorialGrenade;
+
 	void Start () {
 		StartCoroutine(WaitForPlayer());
 	}
@@ -17,10 +20,17 @@ public class ItemSpawner : MonoBehaviour {
 		if (allowedToGrab) {
 			VRTK_InteractGrab grabbingController = (collider.gameObject.GetComponent<VRTK_InteractGrab>() ? collider.gameObject.GetComponent<VRTK_InteractGrab>() : collider.gameObject.GetComponentInParent<VRTK_InteractGrab>());
 			if (CanGrab(grabbingController) && items.grenadeAmmo > 0) {
-				GameObject newItem = Instantiate(itemPrefab);
-				items.grenadeAmmo--;
-				grabbingController.GetComponent<VRTK_InteractTouch>().ForceTouch(newItem);
-				grabbingController.AttemptGrab();
+				if (!tutorialGrenade) {
+					GameObject newItem = Instantiate(itemPrefab);
+					items.grenadeAmmo--;
+					grabbingController.GetComponent<VRTK_InteractTouch>().ForceTouch(newItem);
+					grabbingController.AttemptGrab();
+				}
+				else {
+					GameObject newItem = Instantiate(tutorialGrenade);
+					grabbingController.GetComponent<VRTK_InteractTouch>().ForceTouch(newItem);
+					grabbingController.AttemptGrab();
+				}
 			}
 		}
 	}

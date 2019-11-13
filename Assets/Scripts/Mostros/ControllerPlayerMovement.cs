@@ -14,6 +14,8 @@ public class ControllerPlayerMovement : MonoBehaviour {
 	public float deadZone = 0.3f;
 
 	public bool canMove = true;
+	
+	public ControllerPlayerHP hp;
 
 	void Start () {
 		_id = GetComponent<ControllerPlayerID>();
@@ -22,7 +24,7 @@ public class ControllerPlayerMovement : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (canMove) {
+		if (hp.isAlive) if (canMove) {
 			float xMovement = Input.GetAxis(_id.playerNumber + "_horizontal");
 			if (Mathf.Abs(xMovement) < deadZone) xMovement = 0f;
 			float yMovement = Input.GetAxis(_id.playerNumber + "_vertical");

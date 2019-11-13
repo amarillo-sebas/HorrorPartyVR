@@ -1720,6 +1720,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps: {fileID: 0}
   priestAttack: {fileID: 114783166986754496}
+  hatcherAttack: {fileID: 0}
+  psDeath: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
   type: 2
 --- !u!114 &114463388784006218
 MonoBehaviour:

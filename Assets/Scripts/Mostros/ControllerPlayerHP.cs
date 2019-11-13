@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ControllerPlayerHP : MonoBehaviour {
+	public AnimationManager animationManager;
 	private int _maxHP;
 	public int currentHP = 100;
 	public SoundsManager sm;
@@ -13,9 +14,23 @@ public class ControllerPlayerHP : MonoBehaviour {
 	public GameObject psDeath;
 
 	public bool isEgg = false;
-	void Start () {
+
+	public bool isAlive = true;
+
+	public int respawnTime;
+
+	public RespawnText respawnText;
+
+	public CharacterController cc;
+
+	private AttackEffects _ae;
+
+	IEnumerator Start () {
 		sm = GetComponent<SoundsManager>();
 		_maxHP = currentHP;
+
+		yield return new WaitForSeconds(0.25f);
+		_ae = GetComponentInChildren<AttackEffects>();
 	}
 	
 	void Update () {
@@ -23,11 +38,13 @@ public class ControllerPlayerHP : MonoBehaviour {
 	}
 
 	public void TakeDamage (int d) {
-		currentHP -= d;
-		if (currentHP <= 0) {
-			Die();
-		} else {
-			if (sm) sm.TakeDamage();
+		if (isAlive) {
+			currentHP -= d;
+			if (currentHP <= 0) {
+				Die();
+			} else {
+				if (sm) sm.TakeDamage();
+			}
 		}
 	}
 
@@ -36,18 +53,29 @@ public class ControllerPlayerHP : MonoBehaviour {
 			Destroy(Instantiate(psDeath, transform.position, transform.rotation), 5f);
 		}
 		if (isEgg) GetComponent<HatcherEgg>().EggDestroy();
-		Destroy(gameObject);
+		//Destroy(gameObject);
+		animationManager.anim.SetTrigger("die");
+
+		if (sm) sm.Die();
+		isAlive = false;
+		cc.enabled = false;
+		if (respawnTime > 0) StartCoroutine(Respawn());
 	}
 
 	public void Heal (int h) {
-		currentHP += h;
-		if (currentHP >= _maxHP) currentHP = _maxHP;
+		if (isAlive) {
+			currentHP += h;
+			if (currentHP >= _maxHP) currentHP = _maxHP;
+		}	
 	}
 
-	/*void OnParticleCollision(GameObject ps) {
-		InteractableFlameThrower ift = ps.transform.parent.GetComponent<InteractableFlameThrower>();
-
-		TakeDamage();
-	}*/
-
+	IEnumerator Respawn () {
+		respawnText.Engage(respawnTime);
+		yield return new WaitForSeconds((int)respawnTime);
+		if (_ae) _ae.PriestRespawn();
+		isAlive = true;
+		animationManager.anim.SetTrigger("respawn");
+		currentHP = _maxHP;
+		cc.enabled = true;
+	}
 }

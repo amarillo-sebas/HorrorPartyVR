@@ -1285,6 +1285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ps: {fileID: 198595953870215404}
+  priestAttack: {fileID: 0}
+  hatcherAttack: {fileID: 0}
+  type: 1
 --- !u!114 &114299850989722314
 MonoBehaviour:
   m_ObjectHideFlags: 1

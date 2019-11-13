@@ -281,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1153168381653728}
   m_LocalRotation: {x: 0, y: 0.23391205, z: 0, w: 0.9722578}
-  m_LocalPosition: {x: 0.00099353, y: -0.079816, z: 0.0019453}
+  m_LocalPosition: {x: -0.017, y: -0.119, z: -0.034}
   m_LocalScale: {x: 0.6834315, y: 0.68343157, z: 0.68343157}
   m_Children:
   - {fileID: 4343428298322428}
@@ -321,7 +321,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790628149801056}
   m_LocalRotation: {x: -0.0000003414534, y: -0.8528888, z: 0.0000022342258, w: -0.52209264}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.017993532, y: -0.039184034, z: -0.035945304}
   m_LocalScale: {x: 0.116000235, y: 0.27739695, z: 0.25002313}
   m_Children: []
   m_Father: {fileID: 4796709670885940}
@@ -575,7 +575,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 0.72, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82227551455200302
 AudioSource:
@@ -881,6 +881,8 @@ MonoBehaviour:
   controllers: []
   hpCanvas: {fileID: 4646876658862638}
   safeFromVacuum: 0
+  regenTime: 5
+  regenRate: 2
 --- !u!114 &114871160612732180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -895,6 +897,8 @@ MonoBehaviour:
   itemPrefab: {fileID: 1139527828874180, guid: 08cc0d1b14c464b449bc1622999d5fc7, type: 2}
   allowedToGrab: 1
   items: {fileID: 0}
+  tutorialPouch: 0
+  tutorialGrenade: {fileID: 0}
 --- !u!136 &136177819647825838
 CapsuleCollider:
   m_ObjectHideFlags: 1

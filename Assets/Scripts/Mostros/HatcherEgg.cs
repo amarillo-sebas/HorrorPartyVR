@@ -16,6 +16,8 @@ public class HatcherEgg : MonoBehaviour {
 	public float detectionInterval;
 	private float detectionCounter = 0f;
 
+	private bool _destroyed = false;
+
 	void Update () {
 		if (detectionCounter < Time.time) {
 			detectionCounter = Time.time + detectionInterval;
@@ -35,8 +37,11 @@ public class HatcherEgg : MonoBehaviour {
 	}
 
 	public void EggDestroy () {
-		Destroy(Instantiate(popFX, transform.position, transform.rotation), 5f);
-		if (hatcher) hatcher.RemoveEgg(this);
-		Destroy(gameObject);
+		if (!_destroyed) {
+			_destroyed = true;
+			Destroy(Instantiate(popFX, transform.position, transform.rotation), 5f);
+			if (hatcher) hatcher.RemoveEgg(this);
+			Destroy(gameObject);
+		}
 	}
 }

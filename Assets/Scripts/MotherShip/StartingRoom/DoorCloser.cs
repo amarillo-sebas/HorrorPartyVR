@@ -21,5 +21,7 @@ public class DoorCloser : MonoBehaviour {
 		yield return new WaitForSeconds(t);
 		startingRoomScript.CloseDoor();
 		runningCoroutine = false;
+		MotherShipAudioManager msam = FindObjectOfType(typeof(MotherShipAudioManager)) as MotherShipAudioManager;
+		if (msam) msam.PlayLifeForms();
 	}
 }
